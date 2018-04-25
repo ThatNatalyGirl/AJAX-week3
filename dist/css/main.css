@@ -73,85 +73,48 @@ table {
 }
 
 body {
-	background: #ccc;
+	background: #2f2d2e;
 }
 
 /* 2. Content ================================= */
-.content {
-	position: relative;
-	font-family: sans-serif;
-	width: 90%;
-	max-width: 500px;
-	margin: 140px auto;
-	padding: 30px 20px 30px 30px;
+header {
+	height: 200px;
+	background: #048ba8;
+	color: #2f2d2e;
+	font-family: 'IBM Plex Serif', serif;
+	padding: 40px 3%;
 }
 
-.content .foreground {
-	position: relative;
-	z-index: 2;
-	transform: translateZ(100px);
+header h1 {
+	font-size: 30px;
 }
 
-.content .background {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	background: white;
-	z-index: 1;
-	transition: 0.2s;
-	transform: translateX(20px) perspective(600px) rotateY(15deg);
+header h2 {
+	font-size: 20px;
 }
 
-.content:hover .background {
-	transform: translateX(-30px) perspective(600px) rotateY(-15deg);
+.search {
+	text-align: center;
+	margin-top: 40px;
+	font-size: 20px;
+	font-family: 'IBM Plex Serif', serif;
 }
 
-.content .logo {
-	position: absolute;
-	top: -30px;
-	width: 60px;
-	z-index: 2;
-	transform: translateZ(100px);
-	transition: 0.3s;
+.search label {
+	color: #f18f01;
+	font-size: 25px;
 }
 
-.content .logo:hover {
-	transform: rotate(-0.4turn);
+.search input {
+	font-size: 25px;
+	margin: 0 10px;
 }
 
-.content h1 {
-	font-weight: 700;
-	font-size: 22pt;
-	margin: 15px 0;
-}
-
-.content p {
-	color: #777;
-	line-height: 140%;
-}
-
-.content p.github {
-	font-size: 0.8em;
-}
-
-.content p.github a {
-	opacity: 0.2;
-	transition: 0.3s;
-}
-
-.content p.github a:hover {
-	opacity: 1;
-	color: red;
-}
-
-.content code {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	font-size: 0.8em;
-	opacity: 0.2;
+.search button {
+	background: #f18f01;
+	font-size: 25px;
+	border-radius: 10px;
+	font-family: 'IBM Plex Serif', serif;
 }
 
 /*# sourceMappingURL=main.css.map */
