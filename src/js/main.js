@@ -1,8 +1,10 @@
 console.log(`Piano`)
 
+
+const apiKey = '4b5597618fc046b1a6045d770f61cc8b'
 const searchBtn = document.getElementById('search');
-const articlesDiv = document.querySelector('.articles')
 const keywordValue = document.getElementById('keyword').value
+let articles = document.querySelector('.articles')
 
 searchBtn.addEventListener("click", function(e) {
 			e.preventDefault();
@@ -10,9 +12,20 @@ searchBtn.addEventListener("click", function(e) {
 		})
 
 function getValueFromApi(keyword){
-	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + "4b5597618fc046b1a6045d770f61cc8b" + "?q=" + keywordValue)
-	.then(function(response){
+	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + 'api-key=' + apiKey + "?q=" + keywordValue)
+	//articles can be found in response.data.response.docs
+	.then(function(response.data.response.docs){
 		console.log('results?')
+
+
+		response.data.response.docs.forEach(article =>{
+			console.log (article)
+
+			let li = document.creatElement('li');
+			li.innerHTML = article.headline.main;
+			articles.appendChild(li);
+
+		})
 	})
 
 	.catch(function(error) {
@@ -75,5 +88,30 @@ function getValueFromApi(keyword){
 // Scroll down - Article Search 
 // q  string
 // Location: query ?q=xyz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
