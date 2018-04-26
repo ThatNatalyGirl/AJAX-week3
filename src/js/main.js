@@ -3,16 +3,16 @@ console.log(`Piano`)
 
 const apiKey = '4b5597618fc046b1a6045d770f61cc8b'
 const searchBtn = document.getElementById('search');
-let keywordValue = document.getElementById('keyword').value
+let keywordValue = document.getElementById('q').value
 let articles = document.querySelector('.articles')
 
 searchBtn.addEventListener("click", function(e) {
 			e.preventDefault();
-			getValueFromApi(keywordValue);
+			searchArticles(keywordValue);
 		})
 
-function getValueFromApi(keyword){
-	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + '?api-key=' + apiKey + "&q=" + keyword)
+function searchArticles(keywordValue){
+	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + apiKey + "&q=" + keywordValue)
 	.then(function(response){
 	//articles can be found in response.data.response.docs
 		response.data.response.docs.forEach(article =>{

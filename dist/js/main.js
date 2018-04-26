@@ -4,16 +4,16 @@ console.log('Piano');
 
 var apiKey = '4b5597618fc046b1a6045d770f61cc8b';
 var searchBtn = document.getElementById('search');
-var keywordValue = document.getElementById('keyword').value;
+var keywordValue = document.getElementById('q').value;
 var articles = document.querySelector('.articles');
 
 searchBtn.addEventListener("click", function (e) {
 	e.preventDefault();
-	getValueFromApi(keywordValue);
+	searchArticles(keywordValue);
 });
 
-function getValueFromApi(keyword) {
-	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + '?api-key=' + apiKey + "&q=" + keyword).then(function (response) {
+function searchArticles(keywordValue) {
+	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + apiKey + "&q=" + keywordValue).then(function (response) {
 		//articles can be found in response.data.response.docs
 		response.data.response.docs.forEach(function (article) {
 			console.log(article);
