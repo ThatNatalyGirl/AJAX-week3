@@ -117,4 +117,20 @@ header h2 {
 	font-family: 'IBM Plex Serif', serif;
 }
 
+.articles {
+	color: #048ba8;
+	font-family: 'IBM Plex Serif', serif;
+	font-size: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 5%;
+}
+
+li {
+	width: 250px;
+	height: 250px;
+	margin: 20px;
+	border: 2px solid #fff;
+}
+
 /*# sourceMappingURL=main.css.map */

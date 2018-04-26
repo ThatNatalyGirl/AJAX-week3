@@ -2,18 +2,28 @@
 
 console.log('Piano');
 
+var apiKey = '4b5597618fc046b1a6045d770f61cc8b';
 var searchBtn = document.getElementById('search');
-var articlesDiv = document.querySelector('.articles');
 var keywordValue = document.getElementById('keyword').value;
+var articles = document.querySelector('.articles');
 
 searchBtn.addEventListener("click", function (e) {
 	e.preventDefault();
-	getValueFromApi();
+	getValueFromApi(keywordValue);
 });
 
 function getValueFromApi(keyword) {
-	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + "4b5597618fc046b1a6045d770f61cc8b" + "?q=" + keywordValue).then(function (response) {
-		console.log('results?');
+	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + '?api-key=' + apiKey + "&q=" + keyword).then(function (response) {
+		//articles can be found in response.data.response.docs
+		response.data.response.docs.forEach(function (article) {
+			console.log(article);
+			var li = document.createElement('li');
+			li.innerHTML = article.headline.main;
+			articles.appendChild(li);
+
+			var img = document.createElement('img');
+			img.innerHTML = article.multimedia;
+		});
 	}).catch(function (error) {
 		console.warn('.axios encountered an error!', error);
 		valueEl.value = "UNDEFINED";

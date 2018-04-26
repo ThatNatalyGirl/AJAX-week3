@@ -3,36 +3,37 @@ console.log(`Piano`)
 
 const apiKey = '4b5597618fc046b1a6045d770f61cc8b'
 const searchBtn = document.getElementById('search');
-const keywordValue = document.getElementById('keyword').value
+let keywordValue = document.getElementById('keyword').value
 let articles = document.querySelector('.articles')
 
 searchBtn.addEventListener("click", function(e) {
 			e.preventDefault();
-			getValueFromApi();
+			getValueFromApi(keywordValue);
 		})
 
 function getValueFromApi(keyword){
-	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + 'api-key=' + apiKey + "?q=" + keywordValue)
+	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json" + '?api-key=' + apiKey + "&q=" + keyword)
+	.then(function(response){
 	//articles can be found in response.data.response.docs
-	.then(function(response.data.response.docs){
-		console.log('results?')
-
-
 		response.data.response.docs.forEach(article =>{
 			console.log (article)
-
-			let li = document.creatElement('li');
+			let li = document.createElement('li');
 			li.innerHTML = article.headline.main;
 			articles.appendChild(li);
 
+			let img = document.createElement('img');
+			img.innerHTML = article.multimedia
 		})
 	})
 
 	.catch(function(error) {
-				console.warn('.axios encountered an error!', error);
-				valueEl.value = "UNDEFINED"
-			});
+		console.warn('.axios encountered an error!', error);
+		valueEl.value = "UNDEFINED"
+	});
 }
+
+
+
 
 
 // for (var i = Things.length - 1; i >= 0; i--) {
