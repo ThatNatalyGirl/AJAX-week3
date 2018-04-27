@@ -12,6 +12,21 @@ searchBtn.addEventListener("click", function (e) {
 	searchArticles(keywordValue);
 });
 
+function displayArticle(article) {
+	var title = article.headline.main;
+	var thumbail = article.multimedia[0].url;
+}
+
+function displayArticles(articlesArray) {
+	if (articleArray && articleArray.length && articleArray.length > 0) {
+		articleArray.forEach(function (article) {
+			displayArticle(article);
+		});
+	} else {
+		console.warn("No Articles Found!");
+	}
+}
+
 function searchArticles(keywordValue) {
 	axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + apiKey + "&q=" + keywordValue).then(function (response) {
 		//articles can be found in response.data.response.docs
@@ -22,7 +37,7 @@ function searchArticles(keywordValue) {
 			articles.appendChild(li);
 
 			var img = document.createElement('img');
-			img.innerHTML = article.multimedia;
+			img.innerHTML = article.multimedia[0].url;
 		});
 	}).catch(function (error) {
 		console.warn('.axios encountered an error!', error);
